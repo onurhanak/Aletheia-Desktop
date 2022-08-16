@@ -1,0 +1,129 @@
+:root {
+    --dark-color: #1d1d1d;
+    --light-color:white;
+}
+
+html {
+    box-sizing: border-box;
+
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-color: var(--dark-color);
+    height:100vh;
+    width:100%;
+}
+
+#main {
+    display:flex;
+    height:100%;
+    width:100%;
+}
+
+#nav, #nav ul {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav {
+    width:5%;
+    height:100%;
+    background-color: var(--light-color);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+ul {
+    height: 100%;
+    width:100%;
+    background-color: transparent;
+    gap:5rem;
+}
+
+#content {
+    padding:0;
+    margin:0;
+    height:100%;
+    width:95%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:3vh;
+}
+
+#logo-wrapper, #search-wrapper {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display:flex;
+    gap:1vw;
+    width:30%;
+    background-color:white;
+    border-radius: 8px;
+}
+
+#logo {
+    height:25vh;
+    width:auto;
+}
+
+li {
+    list-style: none;
+    height: 60px;
+    width: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1vw;
+}
+
+ul a {
+    color: var(--dark-color);
+}
+
+li:hover {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+}
+
+#search-wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+#search-query {
+    width: 100%;
+    height:5vh;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 3vh;
+    padding: 5px;
+}
+
+#search-query:focus ~ form {
+    border:4px solid gray;
+}
+
+#search-btn {
+    width: 3vw;
+    height: 5vh;
+    text-align: center;
+    color: var(--dark-color);
+    cursor: pointer;
+    font-size: 3vh;
+    background-color: transparent;
+    border:none;
+    padding-right:5px;
+}
