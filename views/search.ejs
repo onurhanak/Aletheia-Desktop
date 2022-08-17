@@ -16,12 +16,36 @@
     </script>
 
     <title>Libgen Desktop</title>
+
+    <script>
+ function post(path, filename, filetype, link,filesize,author,coverlink,bookname) {
+    filename=filename.trim()
+    filename = filename.replace(':', '')
+    filename = filename.replace('?', '')
+    filename = filename.replace('!', '')
+    filename = filename.replace(new RegExp(" ",'g'), '_')
+    filename=filename+'.'+filetype
+    $.ajax(path, {
+    type: 'POST',
+    data: {
+      filename: filename,
+      dl: link,
+      filetype:filetype,
+      filesize:filesize,
+      author:author,
+      coverlink:coverlink,
+      bookname:bookname
+      
+    }
+  })
+ }
+    </script>
 </head>
 
 <body>
     <div id="main">
         <%- include('navbar.ejs') %>
-        <div id="content" class="columns">
+        <div id="content">
             <div id="search-wrapper">
                 <form>
                     <input type="text" name="query" id="search-query" placeholder="Search for books...">
@@ -33,7 +57,7 @@
                 <div class="result-card">
                     <div class="cover">
                         <figure class="bookcover">
-                            <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
+                            <img class='cover-img' style='z-index: 5;' src='<%= books[i].coverLink %>' alt="bookcover">
                         </figure>
                     </div>
                     <div class="details-wrapper">
@@ -61,7 +85,15 @@
                     
                         </div>
                         <div class='download-wrapper'>
-                            <a href='<%= books[i].downloadLink %>'><i class="fa fa-download"></i></a>
+                            <i onclick="post('/download',
+                            '<%= books[i].title %>',
+                            '<%= books[i].filetype %>',
+                            '<%= books[i].downloadLink %>',
+                            '<%= books[i].filesize %>',
+                            '<%= books[i].author %>',
+                            '<%= books[i].coverLink %>',
+                            '<%= books[i].title %>')",
+                             class="fa fa-download"></i>
                         </div>
                         
                         </div>
