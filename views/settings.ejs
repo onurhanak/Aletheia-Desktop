@@ -5,45 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- IMPORTS -->
+    <!-- FOREIGN IMPORTS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/settings.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/javascripts/index.js"></script>
 
+    <!-- LOCAL IMPORTS -->
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/settings.js"></script>
+    <link rel="stylesheet" href="/stylesheets/settings.css" type="text/css">
 
     <script>
-        function sendNotification() {
-            var notification = new Notification('Settings have been saved!', {
-            icon: '/images/cog.png',
-            body: 'You are good to go!',
-        });
-        }
         var saved = "<%= saved %>"
         if (saved=='saved'){
-            sendNotification()
+            notification('settingsSaved')
         }
-
-
     </script>
+
     <script>
         var theme = "<%= theme %>"
         var mirror = "<%= mirror %>"
-
-        function setSelected(elem) {
-            var selected = document.getElementById(elem)
-            selected.setAttribute('selected','')
-        }
-
-        window.onload = function() {
-            setSelected(theme);
-            setSelected(mirror);
-        };
     </script>
 
-   
     <title>Libgen Desktop</title>
+
 </head>
 <body>
     <div id="main">
@@ -53,7 +38,7 @@
                 <label for="mirrors">Libgen Mirror: </label>
                 <select class="input is-normal" name="mirrors">
                   <option id='libgen.is' value="libgen.is">libgen.is</option>
-                  <option id='gen.lib.rus.ec' value="gen.lib.rus.ec">gen.lib.rus.ec</option>
+                  <!-- <option id='gen.lib.rus.ec' value="gen.lib.rus.ec">gen.lib.rus.ec</option> Need to look up legit mirrors, gen.lib.rus.ec does not work--> 
                   </select>
                   <label for="theme">Theme: </label>
                   <select class="input is-normal" name="theme">

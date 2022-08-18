@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 var homePath = require('../services/setDownloadFolder')
+var settings = require('../services/saveSettings')
 
 // Home page route.
 router.get('/', function (req, res) {

@@ -103,9 +103,9 @@ async function addDownloadLink(completeList) {
     return completeList
 }
 
-async function searchLibgen(query) {
+async function searchLibgen(query,mirror,column) {
     return new Promise(async function (resolve, reject) {
-        var searchUrl = 'https://libgen.is/search.php?req='+ query +'&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def'
+        var searchUrl = 'https://'+mirror+'/search.php?req='+ query +'&lg_topic=libgen&open=0&view=simple&res=50&phrase=1&column='+column
         await axios.get(searchUrl)
         .then(async function(response) {
             var results = await parseResults(response.data)

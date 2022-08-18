@@ -32,6 +32,10 @@ form {
     border-radius: 8px;
 }
 
+select {
+    width:25% !important;
+    border:none !important;
+}
 
 
 .bookcover, .cover-img {

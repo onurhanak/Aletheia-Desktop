@@ -5,51 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- IMPORTS -->
+    <!-- FOREIGN IMPORTS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="/stylesheets/search.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/javascripts/index.js"></script>
+
+    <!-- LOCAL IMPORTS -->
+    <link rel="stylesheet" href="/stylesheets/search.css" type="text/css">
+    <script src="/javascripts/common.js"></script>
+    <script src="/javascripts/search.js"></script>
+
     <script>
         var books = "<%= books %>"
     </script>
 
     <title>Libgen Desktop</title>
-
-    <script>
-        function sendNotification() {
-            var notification = new Notification('Your download has started!', {
-            icon: '/images/downloadIcon.png',
-            body: 'Downloading...',
-        });
-        }
-
-    </script>
-
-    <script>
- function post(path, filename, filetype, link,filesize,author,coverlink,bookname) {
-    filename=filename.trim()
-    filename = filename.replace(':', '')
-    filename = filename.replace('?', '')
-    filename = filename.replace('!', '')
-    filename = filename.replace(new RegExp(" ",'g'), '_')
-    filename=filename+'.'+filetype
-    $.ajax(path, {
-    type: 'POST',
-    data: {
-      filename: filename,
-      dl: link,
-      filetype:filetype,
-      filesize:filesize,
-      author:author,
-      coverlink:coverlink,
-      bookname:bookname
-      
-    }
-  })
- }
-    </script>
 </head>
 
 <body>
@@ -59,7 +29,13 @@
             <div id="search-wrapper">
                 <form>
                     <input type="text" name="query" id="search-query" placeholder="Search for books...">
-                    <button onclick='getSearchTerm()' id='search-btn' name="search-btn"><i class="fa fa-search"></i></button>
+                    <button id='search-btn' name="search-btn"><i class="fa fa-search"></i></button>
+                    <select class="input is-normal" name="column">
+                        <option value="def" selected>Default</option>
+                        <option value="title">Title</option>
+                        <option value="author">Authors</option>
+                        <option value="identifier">ISBN</option>
+                    </select>
                 </form>
             </div>
             <div id="results-wrapper">
@@ -102,7 +78,7 @@
                             '<%= books[i].filesize %>',
                             '<%= books[i].author %>',
                             '<%= books[i].coverLink %>',
-                            '<%= books[i].title %>'); sendNotification()",
+                            '<%= books[i].title %>'); notification('downloadStarted')",
                              class="fa fa-download"></i>
                         </div>
                         
