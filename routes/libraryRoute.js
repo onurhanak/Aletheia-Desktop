@@ -2,8 +2,13 @@
 const express = require('express');
 const router = express.Router();
 
- router.get("/", function (req, res) {
-    res.render('library')
-})
+var readLibrary = require('../services/readLibraryDatabase.js')
+
+
+router.get("/", function (req, res) {
+      readLibrary.readDatabase().then(function (results) {
+        res.render("library", {books:results});
+      })
+  });
 
 module.exports = router;

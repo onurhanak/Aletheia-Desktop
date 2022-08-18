@@ -4,22 +4,28 @@ const http = require('http'); // or 'https' for https:// URLs
 const homedir = require('os').homedir();
 var dir = '/.LibgenDesktop/Library/'
 const fs = require('fs')
+
 var log='library.json'
 var downloadPath = homedir+dir
 var logPath = downloadPath+log
 
-function download(filename, downloadLink, downloadPath) {
-    const file = fs.createWriteStream(downloadPath+filename);
-    const request = http.get(downloadLink, function(response) {
-    response.pipe(file);
+const stream = require('stream')
+const util = require('util')
+const axios = require('axios')
 
-   // after download completed close filestream
-   file.on("finish", () => {
-       file.close();
-       console.log("Download Completed");
-   });
-});
+const finished = util.promisify(stream.finished);
 
+async function download(filename, downloadLink, downloadPath) {
+  const writer = fs.createWriteStream(downloadPath+filename);
+  return axios({
+    method: 'get',
+    url: downloadLink,
+    responseType: 'stream',
+  }).then(response => {
+    response.data.pipe(writer);
+    console.log('download finished')
+    return finished(writer); //this is a Promise
+  });
 }
 
 

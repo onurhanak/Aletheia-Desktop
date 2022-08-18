@@ -18,6 +18,16 @@
     <title>Libgen Desktop</title>
 
     <script>
+        function sendNotification() {
+            var notification = new Notification('Your download has started!', {
+            icon: '/images/downloadIcon.png',
+            body: 'Downloading...',
+        });
+        }
+
+    </script>
+
+    <script>
  function post(path, filename, filetype, link,filesize,author,coverlink,bookname) {
     filename=filename.trim()
     filename = filename.replace(':', '')
@@ -57,7 +67,7 @@
                 <div class="result-card">
                     <div class="cover">
                         <figure class="bookcover">
-                            <img class='cover-img' style='z-index: 5;' src='<%= books[i].coverLink %>' alt="bookcover">
+                            <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
                         </figure>
                     </div>
                     <div class="details-wrapper">
@@ -92,7 +102,7 @@
                             '<%= books[i].filesize %>',
                             '<%= books[i].author %>',
                             '<%= books[i].coverLink %>',
-                            '<%= books[i].title %>')",
+                            '<%= books[i].title %>'); sendNotification()",
                              class="fa fa-download"></i>
                         </div>
                         

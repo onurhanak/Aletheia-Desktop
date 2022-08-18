@@ -10,31 +10,53 @@
     <link rel="stylesheet" href="/stylesheets/library.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/javascripts/index.js"></script>
     <script>
-    var path = (window.URL || window.webkitURL).createObjectURL(file);
-    console.log('path', path);
-    </script>
-<script>
-            $(function () {
-                $('#search-query').focusin(function () {
-                    $('form').css('border', '4px solid gray');
-                });
-                $('#search-query').focusout(function () {
-                    $('form').css('border', '');
-                });
-            });
+        var books = "<%= books %>"
     </script>
 
-    
     <title>Libgen Desktop</title>
 </head>
+
 <body>
     <div id="main">
         <%- include('navbar.ejs') %>
         <div id="content">
-            <header>Library</header>
+            <header>
+                Library
+            </header>
+            <div id="library">
+                <% for(var i=0; i < books.length; i++) { %>
+                <div class="result-card">
+                    <div class="cover">
+                        <figure class="bookcover">
+                            <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
+                        </figure>
+                    </div>
+                    <div class="details-wrapper">
+                        <div class="book-details">
+                            <p class="book-detail bold">
+                                <%= books[i].title %>
+                            </p>
+                            <p class="book-detail">
+                                <%= books[i].author %>
+                            </p>
+                    
+                    
+                        </div>
+                        <div class='open-wrapper'>
+                            <a href='file://<%= books[i].path %><%= books[i].filename %>' target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                        </div>
+                        
+                        </div>
+
+                </div>
+                <% } %>
+
+                
+            </div>
         </div>
+
+
     </div>
 
 </body>

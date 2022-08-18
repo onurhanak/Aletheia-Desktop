@@ -9,7 +9,8 @@ var logPath = downloadPath+log
 function save(bookname,filesize,author,coverLink,filename) {
     fs.closeSync(fs.openSync(logPath, 'a'))
     console.log(filename)
-    data=bookname+','+filesize+','+author+','+coverLink+','+filename+'\n' 
+    author=author.replace(new RegExp(',','g'),'-')
+    data=bookname+','+author+','+coverLink+','+filename+','+downloadPath+'\n' 
     console.log(data)
     fs.appendFile(logPath, data, function (err) {
         if (err) throw err;

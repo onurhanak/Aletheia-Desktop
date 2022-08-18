@@ -3,20 +3,27 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "electron main.js"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "body-parser": "^1.20.0",
     "cheerio": "^1.0.0-rc.12",
     "cheerio-tableparser": "^1.0.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
+    "csv": "^6.2.0",
     "csv-parser": "^3.0.0",
     "debug": "~2.6.9",
     "ejs": "^3.1.8",
     "express": "~4.16.1",
     "http": "^0.0.1-security",
     "http-errors": "^2.0.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "stream": "^0.0.2",
+    "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "electron": "^20.0.3"
   }
 }
