@@ -1,5 +1,6 @@
-@import 'theme-dark.css';
+@import 'theme-light.css';
 @import 'navbar.css';
+@import 'common.css';
 
 #content {
     display:flex;
@@ -13,7 +14,7 @@
 }
 
 header {
-    color:white;
+    color: var(--library-header-color);
     font-size:3vh;
     display:flex;
     align-items: center;
@@ -60,10 +61,9 @@ header {
 
 }
 
-
 .result-card {
     display:flex;
-    background-color: var(--light-color);
+    background-color: var(--result-card-background-color);
     width:40%;
     height:18vh;
     border-radius: 10px;
@@ -87,7 +87,7 @@ header {
 }
 
 .open-wrapper i {
-    color:var(--dark-color) !important;
+    color:var(--download-button-color) !important;
     cursor:pointer;
 
 }
@@ -97,8 +97,7 @@ header {
     align-items: center;
     justify-content: center;
     width:10%;
-    background-color: var(--light-bg-color);
-    color:var(--dark-color) !important;
+    background-color: var(--download-wrapper-background);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     min-width:50px;

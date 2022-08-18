@@ -1,5 +1,6 @@
-@import 'theme-dark.css';
+@import 'theme-light.css';
 @import 'navbar.css';
+@import 'common.css';
 
 #content {
     padding:0;
@@ -24,8 +25,12 @@ form {
     display:flex;
     gap:1vw;
     width:30%;
-    background-color: var(--light-color);
     border-radius: 8px;
+    background-color:var(--background-color-searchbar);
+}
+
+form * {
+    color: var(--text-color-dark);
 }
 
 #logo {

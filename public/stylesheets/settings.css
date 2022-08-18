@@ -1,5 +1,6 @@
 @import 'theme-dark.css';
 @import 'navbar.css';
+@import 'common.css';
 
 #content {
     padding:0;
@@ -11,6 +12,15 @@
     justify-content: center;
     align-items: flex-start;
     gap:3vh;
+}
+
+label {
+    color: var(--settings-label-color);
+}
+
+.button {
+    color:var(--settings-save-button-color) !important;
+    background-color: var(--settings-save-button-background-color) !important;
 }
 
 form {

@@ -1,5 +1,6 @@
-@import 'theme-dark.css';
+@import 'theme-light.css';
 @import 'navbar.css';
+@import 'common.css';
 
 #content {
     padding:0;
@@ -27,7 +28,7 @@ form {
     display:flex;
     gap:1vw;
     width:30%;
-    background-color:white;
+    background-color:var(--form-background-color);
     border-radius: 8px;
 }
 
@@ -59,11 +60,11 @@ form {
 
 .result-card {
     display:flex;
-    background-color: var(--light-color);
+    background-color: var(--result-card-background-color);
     width:40%;
     height:18vh;
     border-radius: 10px;
-    gap:1vw
+    gap:1vw;
 }
 
 .details-wrapper {
@@ -83,7 +84,7 @@ form {
 }
 
 .download-wrapper i {
-    color:var(--dark-color) !important;
+    color:var(--download-button-color) !important;
     cursor: pointer;
 }
 
@@ -92,8 +93,7 @@ form {
     align-items: center;
     justify-content: center;
     width:10%;
-    background-color: var(--light-bg-color);
-    color:var(--dark-color) !important;
+    background-color: var(--download-wrapper-background);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     min-width:50px;
@@ -110,7 +110,7 @@ form {
     min-width:7vw;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background-color: black;
+    background-color: var(--cover-background-color);
 }
 
 .bold {
@@ -139,14 +139,14 @@ form {
 }
 
 #search-query:focus ~ form {
-    border:4px solid gray;
+    border:4px solid var(--border-color-searchbar-focus);
 }
 
 #search-btn {
     width: 3vw;
     height: 4vh;
     text-align: center;
-    color: var(--dark-color);
+    color: var(--text-color-dark);
     cursor: pointer;
     font-size: 2vh;
     background-color: transparent;
