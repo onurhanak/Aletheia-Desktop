@@ -1,3 +1,4 @@
+@import 'theme-dark.css';
 @import 'navbar.css';
 
 #content {
@@ -23,7 +24,7 @@ form {
     display:flex;
     gap:1vw;
     width:30%;
-    background-color:white;
+    background-color: var(--light-color);
     border-radius: 8px;
 }
 

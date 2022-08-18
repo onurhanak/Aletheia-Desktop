@@ -11,10 +11,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/javascripts/index.js"></script>
+
+
     <script>
-    var path = (window.URL || window.webkitURL).createObjectURL(file);
-    console.log('path', path);
+        function sendNotification() {
+            var notification = new Notification('Settings have been saved!', {
+            icon: '/images/cog.png',
+            body: 'You are good to go!',
+        });
+        }
+        var saved = "<%= saved %>"
+        if (saved=='saved'){
+            sendNotification()
+        }
+
+
     </script>
+    <script>
+        var theme = "<%= theme %>"
+        var mirror = "<%= mirror %>"
+
+        function setSelected(elem) {
+            var selected = document.getElementById(elem)
+            selected.setAttribute('selected','')
+        }
+
+        window.onload = function() {
+            setSelected(theme);
+            setSelected(mirror);
+        };
+    </script>
+
 <script>
             $(function () {
                 $('#search-query').focusin(function () {
@@ -36,8 +63,13 @@
             <form action='' method="POST">
                 <label for="mirrors">Libgen Mirror: </label>
                 <select class="input is-normal" name="mirrors">
-                  <option value="libgen.is">libgen.is</option>
-                  <option value="gen.lib.rus.ec">gen.lib.rus.ec</option>
+                  <option id='libgen.is' value="libgen.is">libgen.is</option>
+                  <option id='gen.lib.rus.ec' value="gen.lib.rus.ec">gen.lib.rus.ec</option>
+                  </select>
+                  <label for="theme">Theme: </label>
+                  <select class="input is-normal" name="theme">
+                    <option id="dark" value="dark">Dark</option>
+                    <option id='light' value="light">Light</option>
                   </select>
                   <input type="submit" class="button is-primary" value="Save">
             </form>
