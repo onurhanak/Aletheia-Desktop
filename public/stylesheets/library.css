@@ -10,17 +10,29 @@
     padding-top:3vh;
     padding-bottom: 3vh;
     width:100%;
-    gap:2vh
+    gap:4vh
 }
 
 header {
     color: var(--library-header-color);
     font-size:3vh;
     display:flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width:100%;
     height:10%;
+    gap:2vh;
+}
+
+header input {
+    width: 30%;
+    height:4vh;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 2vh;
+    padding: 5px;
 }
 
 #library {
@@ -123,4 +135,11 @@ header {
 
 .book-detail {
     font-family: sans-serif;
+}
+
+#noBooks {
+    color: var(--noBooks-color);
+    font-size:2.5vh;
+    font-family:sans-serif;
+   
 }

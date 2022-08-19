@@ -12,9 +12,11 @@
 
     <!-- LOCAL IMPORTS -->
     <link rel="stylesheet" href="/stylesheets/library.css" type="text/css">
+    <script src="/javascripts/library.js"></script>
 
     <script>
         var books = "<%= books %>"
+
     </script>
 
     <title>Libgen Desktop</title>
@@ -26,10 +28,12 @@
         <div id="content">
             <header>
                 Library
+                <input type="text" id="searchLibrary" onkeyup="search()" placeholder="Search for books in your library..">
             </header>
+            
             <div id="library">
                 <% for(var i=0; i < books.length; i++) { %>
-                <div class="result-card">
+                <div id='result-card' class="result-card">
                     <div class="cover">
                         <figure class="bookcover">
                             <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">

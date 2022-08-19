@@ -15,7 +15,7 @@ async function readDatabase() {
 
     var books=[]
     fs.createReadStream(libraryData)
-    .pipe(parse({ delimiter: ",", from_line: 1 }))
+    .pipe(parse({ delimiter: "!", from_line: 1 }))
     .on("data", function (row) {
         var book = new Book(row)
         books.push(book)

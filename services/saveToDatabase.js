@@ -8,10 +8,10 @@ var logPath = downloadPath+log
 
 function save(bookname,filesize,author,coverLink,filename) {
     fs.closeSync(fs.openSync(logPath, 'a'))
-    console.log(filename)
-    author=author.replace(new RegExp(',','g'),'-')
-    data=bookname+','+author+','+coverLink+','+filename+','+downloadPath+'\n' 
-    console.log(data)
+    //author=author.replace(new RegExp(',','g'),'-')
+    //bookname=bookname.replace(new RegExp(',','g'),'-')
+    //filename=filename.replace(new RegExp(',','g'),'-')
+    data=bookname+'!'+author+'!'+coverLink+'!'+filename+'!'+downloadPath+'\n' 
     fs.appendFile(logPath, data, function (err) {
         if (err) throw err;
         console.log('Saved to database.');
