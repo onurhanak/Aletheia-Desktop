@@ -4,6 +4,7 @@ const homedir = require('os').homedir();
 var dir = '/.LibgenDesktop/Library/'
 var log='library.csv'
 var downloadPath = homedir+dir
+var downloadPath= downloadPath.replace(/\\/g, "\\\\");
 var logPath = downloadPath+log
 
 function save(bookname,filesize,author,coverLink,filename) {

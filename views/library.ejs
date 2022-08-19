@@ -13,10 +13,12 @@
     <!-- LOCAL IMPORTS -->
     <link rel="stylesheet" href="/stylesheets/library.css" type="text/css">
     <script src="/javascripts/library.js"></script>
+    <script src="/javascripts/common.js"></script>
+
 
     <script>
         var books = "<%= books %>"
-
+        var openCommand = "<%= open %>"
     </script>
 
     <title>Libgen Desktop</title>
@@ -51,7 +53,8 @@
                     
                         </div>
                         <div class='open-wrapper'>
-                            <a href='file://<%= books[i].path %><%= books[i].filename %>' target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                            
+                            <i onclick="post('/library/',openCommand,'<%= books[i].path %><%= books[i].filename %>');notification('opening')" class="fa fa-file-pdf-o" aria-hidden="true"></i>
                         </div>
                         
                         </div>

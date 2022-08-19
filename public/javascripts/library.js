@@ -18,6 +18,17 @@ function search() {
     }
   }
 
+  function post(path, command, filePath) {
+    $.ajax(path, {
+    type: 'POST',
+    data: {
+      command: command,
+      filePath: filePath    
+    }
+  })
+ }
+
+
 window.onload=function() {
   if (books.length === 0) {
           var noBooks = document.createElement('p')

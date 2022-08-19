@@ -10,6 +10,7 @@ function createWindow() {
     height: 700,
     webPreferences: {
       nodeIntegration: true,
+      plugins:true,
     },
     autoHideMenuBar: true,
     titleBarStyle: 'hidden',

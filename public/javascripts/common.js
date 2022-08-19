@@ -10,6 +10,12 @@ function notification(purpose) {
             icon='/images/cog.png'
             body='You are good to go!'
             break
+        case 'opening':
+            title='Opening the book'
+            icon='/images/downloadIcon.png'
+            body='Opening the book with your default PDF viewer.'
+            break
+
     }
     sendNotification(title,icon,body)
 };
