@@ -13,6 +13,20 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(bodyParser.text());
 app.use(cors());
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+//Whenever someone connects this gets executed
+io.on('connection', function(socket){
+  console.log('A user connected');
+  socket.send('Sent a message 4seconds after connection!');
+
+  //Whenever someone disconnects this piece of code executed
+  socket.on('disconnect', function () {
+     socket.send('Sent a message 4seconds after connection!');
+  });
+});
+
 const libraryPage = require('./routes/libraryRoute.js')
 app.use('/library', libraryPage);
 
@@ -47,6 +61,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

@@ -34,7 +34,7 @@
         <%- include('navbar.ejs') %>
         <div id="content" class="columns">
             <div id="logo-wrapper">
-                <img src="/images/logo.svg" alt="" id="logo">
+                <h1 id="logo">ἀλήθεια</h1>
             </div>
             <div id="search-wrapper">
                 <form action='/search' name='search' method="POST">
@@ -52,6 +52,9 @@
 
 
     </div>
-
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
 </body>
 </html>

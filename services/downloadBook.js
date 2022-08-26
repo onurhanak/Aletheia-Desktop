@@ -12,7 +12,7 @@ var logPath = downloadPath+log
 const stream = require('stream')
 const util = require('util')
 const axios = require('axios')
-
+axios.defaults.baseURL = 'http://127.0.0.1:3002';
 const finished = util.promisify(stream.finished);
 
 async function download(filename, downloadLink, downloadPath) {
@@ -24,7 +24,14 @@ async function download(filename, downloadLink, downloadPath) {
   }).then(response => {
     response.data.pipe(writer);
     console.log('download finished')
-    return finished(writer); //this is a Promise
+    axios({
+      method: 'post',
+      url: '/',
+      data: {
+        message: 'downloadFinished'
+      }
+    });
+    return finished(writer); 
   });
 }
 

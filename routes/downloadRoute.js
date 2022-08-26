@@ -8,8 +8,6 @@ var downloadBook = require('../services/downloadBook')
 var saveBook = require('../services/saveToDatabase')
 
 
-
-
 router.post('/', async function(req,res){
     bookName=req.body.bookname
     filename=req.body.filename
@@ -19,8 +17,7 @@ router.post('/', async function(req,res){
     coverLink=req.body.coverlink
     console.log(bookName,filesize,author,coverLink,filename)
     downloadBook.download(filename,dl,pathDownload)
-    var x = await saveBook.save(bookName,filesize,author,coverLink,filename)
-    console.log(x)
+    saveBook.save(bookName,filesize,author,coverLink,filename)
 })
 
 module.exports = router;
