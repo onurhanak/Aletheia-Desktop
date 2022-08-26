@@ -6,6 +6,7 @@ const router = express.Router();
 // search function
 var search = require('../services/searchLibgen')
 var settings = require('../services/saveSettings')
+
 router.post('/', function(req,res){
     query= req.body.query
     column = req.body.column

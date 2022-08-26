@@ -38,23 +38,24 @@
                 <div id='result-card' class="result-card">
                     <div class="cover">
                         <figure class="bookcover">
-                            <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
+                            <img class='cover-img' src='<%= books[i][0].itemInfo.coverLink %>' alt="bookcover">
                         </figure>
                     </div>
                     <div class="details-wrapper">
                         <div class="book-details">
                             <p class="book-detail bold">
-                                <%= books[i].title %>
+                                <%= books[i][0].itemInfo.bookName %>
                             </p>
                             <p class="book-detail">
-                                <%= books[i].author %>
+                                <%= books[i][0].itemInfo.author %>
                             </p>
                     
                     
                         </div>
                         <div class='open-wrapper'>
                             
-                            <i onclick="post('/library/',openCommand,'<%= books[i].path %><%= books[i].filename %>');notification('opening')" class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            <i onclick="post('/library/',openCommand,'<%= books[i][0].itemInfo.downloadPath %><%= books[i][0].itemName %>');notification('opening')" class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            <i onclick="post('/delete/', 'rm', '<%= books[i][0].itemInfo.downloadPath %><%= books[i][0].itemName %>')" class="fa fa-trash" aria-hidden="true"></i>
                         </div>
                         
                         </div>

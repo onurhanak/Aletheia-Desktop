@@ -2,18 +2,15 @@ const fs = require("fs");
 const { parse } = require("csv-parse");
 
 var homePath = require("../services/setDownloadFolder");
-
-
 var pathDownload = homePath.downloadPath;
-var libraryData = homePath.downloadPath + "library.csv";
-
-
-
+var libraryData = homePath.downloadPath + "library.json";
 
 async function readDatabase() {
     return new Promise(async function (resolve, reject) {
 
-    var books=[]
+    var books = JSON.parse(fs.readFileSync(libraryData).toString('utf-8'));
+    resolve(books)
+    /*
     fs.createReadStream(libraryData)
     .pipe(parse({ delimiter: "!", from_line: 1 }))
     .on("data", function (row) {
@@ -24,7 +21,8 @@ async function readDatabase() {
         resolve(books)
     })
   })
-}
+  */
+})}
 
 class Book {
   constructor(attrList) {

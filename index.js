@@ -13,20 +13,6 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(bodyParser.text());
 app.use(cors());
 
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-
-//Whenever someone connects this gets executed
-io.on('connection', function(socket){
-  console.log('A user connected');
-  socket.send('Sent a message 4seconds after connection!');
-
-  //Whenever someone disconnects this piece of code executed
-  socket.on('disconnect', function () {
-     socket.send('Sent a message 4seconds after connection!');
-  });
-});
-
 const libraryPage = require('./routes/libraryRoute.js')
 app.use('/library', libraryPage);
 
@@ -38,6 +24,9 @@ app.use('/', indexPage);
 
 const downloadPage = require('./routes/downloadRoute.js');
 app.use('/download', downloadPage);
+
+const deletePage = require('./routes/deleteRoute.js');
+app.use('/delete', deletePage);
 
 const searchPage = require('./routes/searchRoute.js');
 app.use('/search', searchPage);
@@ -61,6 +50,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-http.listen(port, () => {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
