@@ -1,27 +1,24 @@
 const fs = require('fs')
-const http = require('http'); // or 'https' for https:// URLs
 const homedir = require('os').homedir();
 var dir = '/.LibgenDesktop/Library/'
 var log='library.json'
 var downloadPath = homedir+dir
-var downloadPath= downloadPath.replace(/\\/g, "\\\\");
+var downloadPath= downloadPath.replace(/\\/g, "\\");
 var logPath = downloadPath+log
 
 function save(bookname,filesize,author,coverLink,filename) {
+  // should create JSOn if does not exist
     var books = JSON.parse(fs.readFileSync(logPath).toString('utf-8'));
-    var book = [];
+    books[filename] = {}
     var itemInfo={
       bookName: bookname,
       coverLink: coverLink,
       author: author,
       filesize: filesize,
-      downloadPath: downloadPath,
+      filename: filename,
+      downloadPath:downloadPath
     }
-    book.push({
-      itemName: filename,
-      itemInfo: itemInfo,
-    })
-    books.push(book)
+    books[filename].itemInfo = itemInfo
     fs.closeSync(fs.openSync(logPath, 'a'))
     var jsonString= JSON.stringify(books);
     fs.writeFile(logPath, jsonString, 'utf8', function (err) {
