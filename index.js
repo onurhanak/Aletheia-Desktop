@@ -34,7 +34,7 @@ app.use('/search', searchPage);
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 
-/*
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -50,7 +50,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-*/
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

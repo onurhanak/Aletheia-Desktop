@@ -7,4 +7,4 @@ function getOpenCommand() {
     }
  }
 
- module.exports = { getOpenCommand };
+module.exports = { getOpenCommand };

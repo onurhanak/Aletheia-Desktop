@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +18,7 @@
 
     <script>
         var saved = "<%= saved %>"
-        if (saved=='saved'){
+        if (saved == 'saved') {
             notification('settingsSaved')
         }
     </script>
@@ -30,27 +31,29 @@
     <title>Libgen Desktop</title>
 
 </head>
+
 <body>
     <div id="main">
         <%- include('navbar.ejs') %>
-        <div id="content">
-            <form action='' method="POST">
-                <label for="mirrors">Libgen Mirror: </label>
-                <select class="input is-normal" name="mirrors">
-                  <option id='libgen.is' value="libgen.is">libgen.is</option>
-                  <!-- <option id='gen.lib.rus.ec' value="gen.lib.rus.ec">gen.lib.rus.ec</option> Need to look up legit mirrors, gen.lib.rus.ec does not work--> 
-                  </select>
-                  <label for="theme">Theme: </label>
-                  <select class="input is-normal" name="theme">
-                    <option id="dark" value="dark">Dark</option>
-                    <option id='light' value="light">Light</option>
-                  </select>
-                  <input type="submit" class="button is-primary" value="Save">
-            </form>
-        </div>
+            <div id="content">
+                <form action='' method="POST">
+                    <label for="mirrors">Libgen Mirror: </label>
+                    <select class="input is-normal" name="mirrors">
+                        <option id='libgen.is' value="libgen.is">libgen.is</option>
+                        <!-- <option id='gen.lib.rus.ec' value="gen.lib.rus.ec">gen.lib.rus.ec</option> Need to look up legit mirrors, gen.lib.rus.ec does not work-->
+                    </select>
+                    <label for="theme">Theme: </label>
+                    <select class="input is-normal" name="theme">
+                        <option id="dark" value="dark">Dark</option>
+                        <option id='light' value="light">Light</option>
+                    </select>
+                    <input type="submit" class="button is-primary" value="Save">
+                </form>
+            </div>
 
 
     </div>
 
 </body>
+
 </html>

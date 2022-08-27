@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,74 +25,74 @@
 <body>
     <div id="main">
         <%- include('navbar.ejs') %>
-        <div id="content">
-            <div id="search-wrapper">
-                <form>
-                    <input type="text" name="query" id="search-query" placeholder="Search for books...">
-                    <button id='search-btn' name="search-btn"><i class="fa fa-search"></i></button>
-                    <select class="input is-normal" name="column">
-                        <option value="def" selected>Default</option>
-                        <option value="title">Title</option>
-                        <option value="author">Authors</option>
-                        <option value="identifier">ISBN</option>
-                    </select>
-                </form>
-            </div>
-            <div id="results-wrapper">
-                <% for(var i=0; i < books.length; i++) { %>
-                <div class="result-card">
-                    <div class="cover">
-                        <figure class="bookcover">
-                            <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
-                        </figure>
-                    </div>
-                    <div class="details-wrapper">
-                        <div class="book-details">
-                            <p class="book-detail bold">
-                                <%= books[i].title %>
-                            </p>
-                            <p class="book-detail">
-                                <%= books[i].author %>
-                            </p>
-                            <p class="book-detail">
-                                <%= books[i].year %>
-                            </p>
-                            <p class="book-detail">
-                                <%= books[i].pages %> pages
-                            </p>
-                            <p class="book-detail">
-                                <%= books[i].language %>
-                            </p>
-                            <p class="book-detail">Filetype: <%= books[i].filetype %>
-                            </p>
-                            <p class="book-detail">Filesize: <%= books[i].filesize %>
-                            </p>
-                    
-                    
-                        </div>
-                        <div class='download-wrapper'>
-                            <i onclick="post('/download',
+            <div id="content">
+                <div id="search-wrapper">
+                    <form>
+                        <input type="text" name="query" id="search-query" placeholder="Search for books...">
+                        <button id='search-btn' name="search-btn"><i class="fa fa-search"></i></button>
+                        <select class="input is-normal" name="column">
+                            <option value="def" selected>Default</option>
+                            <option value="title">Title</option>
+                            <option value="author">Authors</option>
+                            <option value="identifier">ISBN</option>
+                        </select>
+                    </form>
+                </div>
+                <div id="results-wrapper">
+                    <% for(var i=0; i < books.length; i++) { %>
+                        <div class="result-card">
+                            <div class="cover">
+                                <figure class="bookcover">
+                                    <img class='cover-img' src='<%= books[i].coverLink %>' alt="bookcover">
+                                </figure>
+                            </div>
+                            <div class="details-wrapper">
+                                <div class="book-details">
+                                    <p class="book-detail bold">
+                                        <%= books[i].title %>
+                                    </p>
+                                    <p class="book-detail">
+                                        <%= books[i].author %>
+                                    </p>
+                                    <p class="book-detail">
+                                        <%= books[i].year %>
+                                    </p>
+                                    <p class="book-detail">
+                                        <%= books[i].pages %> pages
+                                    </p>
+                                    <p class="book-detail">
+                                        <%= books[i].language %>
+                                    </p>
+                                    <p class="book-detail">Filetype: <%= books[i].filetype %>
+                                    </p>
+                                    <p class="book-detail">Filesize: <%= books[i].filesize %>
+                                    </p>
+
+
+                                </div>
+                                <div class='download-wrapper'>
+                                    <i onclick="post('/download',
                             '<%= books[i].title %>',
                             '<%= books[i].filetype %>',
                             '<%= books[i].downloadLink %>',
                             '<%= books[i].filesize %>',
                             '<%= books[i].author %>',
                             '<%= books[i].coverLink %>',
-                            '<%= books[i].title %>'); notification('downloadStarted')",
-                             class="fa fa-download"></i>
+                            '<%= books[i].title %>'); notification('downloadStarted')" , class="fa fa-download"></i>
+                                </div>
+
+                            </div>
+
                         </div>
-                        
-                        </div>
+                        <% } %>
+
 
                 </div>
-                <% } %>
-
-                
             </div>
-        </div>
 
 
     </div>
 
 </body>
+
 </html>
