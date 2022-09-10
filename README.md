@@ -1,5 +1,4 @@
 
-***
 <sub>
 <h1 align="center">Aletheia/ἀλήθεια</h1>
 </sub>
