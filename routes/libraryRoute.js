@@ -15,6 +15,7 @@ router.get("/", async function (req, res) {
 
 router.post("/", async function (req, res) {
   filePath = req.body.filePath;
+  console.log(filePath)
   open(filePath);
 });
 

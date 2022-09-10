@@ -6,6 +6,8 @@ var pathDownload = homePath.downloadPath;
 var downloadBook = require("../services/downloadBook");
 var saveBook = require("../services/saveToDatabase");
 
+
+
 router.post("/", async function (req, res) {
   bookName = req.body.bookname;
   filename = req.body.filename;
@@ -15,7 +17,8 @@ router.post("/", async function (req, res) {
   coverLink = req.body.coverlink;
   console.log(bookName, filesize, author, coverLink, filename);
   downloadBook.download(filename, dl, pathDownload);
-  saveBook.save(bookName, filesize, author, coverLink, filename);
+  await saveBook.save(bookName, filesize, author, coverLink, filename);
+  req.app.io.emit('download', {key:"finished"});
 });
 
 module.exports = router;

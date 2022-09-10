@@ -1,6 +1,10 @@
 const express = require('express')
 const app = express()
 const port = 3002
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 const bodyParser = require('body-parser')
 const cors = require('cors');
@@ -12,7 +16,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 app.use(bodyParser.text());
 app.use(cors());
-
+app.io = io;
 const libraryPage = require('./routes/libraryRoute.js')
 app.use('/library', libraryPage);
 
@@ -51,6 +55,10 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(port, () => {
+io.on('connection', (socket) => {
+  console.log('a user connected');
+});
+
+server.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

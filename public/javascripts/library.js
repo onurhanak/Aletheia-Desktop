@@ -18,15 +18,24 @@ function search() {
     }
   }
 
-  function post(path, command, filePath) {
+function post(path, command, filePath) {
     $.ajax(path, {
     type: 'POST',
     data: {
       command: command,
       filePath: filePath    
-    }
+    },
   })
+  if (path=='/delete/') { // This is a terrible solution. I cannot get the AJAX post to reload the page once it is done, so I am calling another function
+    refresh()
+  } 
  }
+
+
+async function refresh() {
+  await new Promise(r => setTimeout(r, 1000)); // waits for server to delete the book. Need a better solution!
+  location.reload()
+}
 
 
 window.onload=function() {

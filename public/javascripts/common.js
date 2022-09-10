@@ -15,7 +15,11 @@ function notification(purpose) {
             icon='/images/downloadIcon.png'
             body='Opening the book with your default PDF viewer.'
             break
-
+        case 'downloadFinished':
+            title="Your download has finished!"
+            icon='/images/downloadIcon.png'
+            body='All done!'
+            break
     }
     sendNotification(title,icon,body)
 };

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.0/socket.io.min.js"></script>
 
     <!-- LOCAL IMPORTS -->
     <link rel="stylesheet" href="/stylesheets/search.css" type="text/css">
@@ -17,6 +18,16 @@
     <script src="/javascripts/search.js"></script>
     <script>
         var books = "<%= books %>"
+    </script>
+
+    <script>
+        var socket = io()
+        socket.on('download', function (msg) {
+            console.log(msg.key)
+            if (msg.key == 'finished') {
+                notification('downloadFinished')
+            }
+        });
     </script>
 
     <title>Libgen Desktop</title>

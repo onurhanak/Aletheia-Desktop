@@ -3,10 +3,10 @@ const homedir = require("os").homedir();
 var dir = "/.LibgenDesktop/Library/";
 var log = "library.json";
 var downloadPath = homedir + dir;
-var downloadPath = downloadPath.replace(/\\/g, "\\");
+var downloadPath = downloadPath.replace(/\\/g, "\\\\");
 var logPath = downloadPath + log;
 
-function save(bookname, filesize, author, coverLink, filename) {
+async function save(bookname, filesize, author, coverLink, filename) {
   // should create JSOn if does not exist
   var books = JSON.parse(fs.readFileSync(logPath).toString("utf-8"));
   books[filename] = {};
