@@ -1,7 +1,7 @@
 
 ***
 <sub>
-<h1 align="center">Aletheia/Ἀλήθεια</h1>
+<h1 align="center">Aletheia/ἀλήθεια</h1>
 </sub>
 
 Aletheia is a desktop application for <a href='https://libgen.is'>Library Genesis</a>. It allows you to search Library Genesis, download books, and keep track of them in your local library. 
