@@ -1,7 +1,7 @@
 
 ***
 <sub>
-<p align='center'><img  src="[https://raw.githubusercontent.com/onurhanak/Break-Down-Walls/main/graduate-hat.png](https://raw.githubusercontent.com/onurhanak/aletheia/master/public/images/logo.svg?token=GHSAT0AAAAAABYTBP25C3L7K4SY2NPQSOOMYY43MSA)" height="100" width="auto"></p>
+<p align='center'><img  src="https://raw.githubusercontent.com/onurhanak/aletheia/master/public/image/logo.svg?token=GHSAT0AAAAAABYTBP25C3L7K4SY2NPQSOOMYY43MSA" height="100" width="auto"></p>
 </sub>
 <h1 align="center">Aletheia</h1>
 
