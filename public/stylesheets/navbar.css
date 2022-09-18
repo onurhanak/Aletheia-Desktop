@@ -11,6 +11,8 @@
     background-color: var(--navbar-background-color);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    position:fixed;
+    -webkit-app-region: drag
 }
 
 ul {
@@ -18,6 +20,7 @@ ul {
     width:3.5vw;
     background-color: transparent;
     gap:5rem;
+    position:fixed;
 }
 
 li {
@@ -29,10 +32,12 @@ li {
     justify-content: center;
     font-size: 1vw;
     color:var(--navbar-item-color);
+    -webkit-app-region: no-drag
 }
 
 ul a {
     color: var(--navbar-item-color);
+    -webkit-app-region: no-drag
 }
 
 li:hover {

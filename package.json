@@ -2,8 +2,10 @@
   "name": "aletheia-desktop",
   "version": "0.0.1",
   "private": true,
+  "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron .",
+    "build": "node builder.js"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -16,6 +18,7 @@
     "csv-parser": "^3.0.0",
     "debug": "~2.6.9",
     "ejs": "^3.1.8",
+    "electron-packager": "^16.0.0",
     "express": "~4.16.1",
     "http": "^0.0.1-security",
     "http-errors": "^2.0.0",
