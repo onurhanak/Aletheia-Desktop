@@ -5,7 +5,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
-
+const path = require('path');
 const bodyParser = require('body-parser')
 const cors = require('cors');
 app.options('*', cors());
@@ -36,8 +36,8 @@ const searchPage = require('./routes/searchRoute.js');
 app.use('/search', searchPage);
 
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public'));
-
+app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(__dirname, "views"));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
