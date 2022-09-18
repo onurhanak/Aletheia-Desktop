@@ -1,4 +1,4 @@
-@import 'theme-dark.css';
+@import 'theme-light.css';
 @import 'navbar.css';
 @import 'common.css';
 
@@ -31,7 +31,7 @@ form {
 }
 
 select {
-    width:25% !important;
+    width:35% !important;
     border:none !important;
 }
 
