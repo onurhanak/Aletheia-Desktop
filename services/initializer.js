@@ -17,4 +17,4 @@ function createFiles() {
     checkForFile(settingsPath)
 }
 
-
+module.exports = { createFiles };
