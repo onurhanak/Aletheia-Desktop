@@ -9,7 +9,7 @@ const open = require("open");
 router.get("/", async function (req, res) {
   var openCommand = await defaultOpen.getOpenCommand();
   readLibrary.readDatabase().then(function (results) {
-    res.render("library", { books: results, open: openCommand });
+    res.render("../views/library.ejs", { books: results, open: openCommand });
   });
 });
 

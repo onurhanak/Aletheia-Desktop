@@ -19,7 +19,7 @@ router.get("/", function (req, res) {
   var column = req.query.column;
   if (query != undefined) {
     search.searchLibgen(query, mirror, column).then(function (results) {
-      res.render("search", { books: results });
+      res.render("../views/search.ejs", { books: results });
     });
   } else {
     res.render("index");

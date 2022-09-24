@@ -27,7 +27,7 @@ function readSettings() {
   return [jsonSettings["theme"], jsonSettings["mirror"]];
 }
 
-function applyTheme(theme) {
+function applyTheme(theme) { // need this function to be more flexible for future theme support
   var views = ["index.css", "library.css", "search.css", "settings.css"];
   if (theme == "dark") {
     for (let view of views) {
@@ -49,7 +49,7 @@ function applyTheme(theme) {
     }
   } else if (theme == "light") {
     for (let view of views) {
-      view = "public/stylesheets/" + view;
+      view = "public/stylesheets/" + view; // this should not be hardcoded
 
       fs.readFile(view, "utf8", function (err, data) {
         if (err) {

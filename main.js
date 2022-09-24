@@ -5,6 +5,10 @@ const server = require("./index");
 let mainWindow;
 
 function createWindow() {
+  if (process.platform === 'win32') {
+    app.setAppUserModelId("Aletheia Desktop");
+  }
+
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 700,
@@ -13,7 +17,7 @@ function createWindow() {
       plugins:true,
     },
     autoHideMenuBar: true,
-    titleBarStyle: 'hidden',
+    //titleBarStyle: 'hidden',
     titleBarOverlay: true,
     titleBarOverlay: {
       color: '#1d1d1d',
@@ -21,13 +25,12 @@ function createWindow() {
       height: 30
     }
   });
-
   mainWindow.loadURL("http://localhost:3002");
   mainWindow.on("closed", function () {
     mainWindow = null;
   });
 }
-
+console.log(app.getAppPath())
 app.on("ready", createWindow);
 
 app.on("resize", function (e, x, y) {
