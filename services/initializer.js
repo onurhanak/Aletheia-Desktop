@@ -1,16 +1,13 @@
 var homePath = require("../services/setDownloadFolder");
 var libraryData = homePath.downloadPath + "library.json";
 var settingsPath = homePath.downloadPath + "settings.json";
-fs = require("fs");
-
+const fsExtra = require('fs-extra');
+const fs = require('fs')
 function checkForFile(fileName) {
-  fs.exists(fileName, function (exists) {
-    if (exists) {
-    } else {
-      fs.openSync(fileName);
-      fs.writeFileSync(fileName, "{}");
-    }
+    fsExtra.ensureFile(fileName, err => {
+      console.log(err) // => null
   });
+    fs.writeFileSync(fileName, "{}");
 }
 
 function createFiles() {
