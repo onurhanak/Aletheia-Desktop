@@ -7,6 +7,7 @@ function checkForFile(fileName) {
   fs.exists(fileName, function (exists) {
     if (exists) {
     } else {
+      fs.openSync(fileName);
       fs.writeFileSync(fileName, "{}");
     }
   });
