@@ -14,7 +14,7 @@ router.post("/", function (req, res) {
 router.get("/", function (req, res) {
   var settingsData = settings.readSettings();
   var theme = settingsData[0];
-  var mirror = settingsData[1];
+  var mirror = "libgen.is"
   var query = req.query.query;
   var column = req.query.column;
   if (query != undefined) {
