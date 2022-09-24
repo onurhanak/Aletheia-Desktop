@@ -8,7 +8,7 @@ const io = new Server(server);
 const path = require('path');
 const bodyParser = require('body-parser')
 const cors = require('cors');
-const initialize = require("../services/initializer");
+const initialize = require("./services/initializer");
 
 initialize.createFiles()
 
