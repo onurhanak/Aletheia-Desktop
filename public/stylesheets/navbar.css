@@ -31,7 +31,6 @@ li {
     justify-content: center;
     font-size: 1vw;
     color:var(--navbar-item-color);
-    /*-webkit-app-region: no-drag*/
 }
 
 ul a {
@@ -41,5 +40,4 @@ ul a {
 li:hover {
     background-color: var(--navbar-item-background-color-hover);
     color: var(--navbar-item-color-hover);
-    /*-webkit-app-region: no-drag*/
 }

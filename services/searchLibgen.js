@@ -45,9 +45,7 @@ async function generateUrlString(idList) {
 
   await axios
     .get(
-      "https://libgen.is/json.php?ids=" +
-        urlString +
-        "&fields=id,md5,openlibraryid"
+      `https://libgen.is/json.php?ids=${urlString}&fields=id,md5,openlibraryid`
     )
     .then(async function (response) {
       for (let y = 0; y < response.data.length; y++) {
@@ -95,10 +93,10 @@ async function addDownloadLink(completeList) {
   for (let obj of completeList) {
     var downloadID = obj.id.slice(0, -3).toString() + "000";
     var downloadUrl =
-      "http://62.182.86.140/main/" + downloadID + "/" + obj.md5 + "/";
+      `http://62.182.86.140/main/${downloadID}/${obj.md5}/` 
     if (obj.olid.length > 3) {
       var coverUrl =
-        "https://covers.openlibrary.org/b/olid/" + obj.olid + "-L.jpg";
+        `https://covers.openlibrary.org/b/olid/${obj.olid}-L.jpg`
     } else {
       var coverUrl = "/images/not_found.jpg";
     }
@@ -108,15 +106,9 @@ async function addDownloadLink(completeList) {
   return completeList;
 }
 
-async function searchLibgen(query, mirror, column) {
+async function searchLibgen(query, mirror, column,page) {
   return new Promise(async function (resolve, reject) {
-    var searchUrl =
-      "https://" +
-      mirror +
-      "/search.php?req=" +
-      query +
-      "&lg_topic=libgen&open=0&view=simple&res=50&phrase=1&column=" +
-      column;
+    var searchUrl =`https://${mirror}/search.php?req=${query}&lg_topic=libgen&open=0&view=simple&res=50&phrase=1&column=${column}&page=${page}`
     await axios.get(searchUrl).then(async function (response) {
       var results = await parseResults(response.data);
       var objList_idList = await buildBooks(results);

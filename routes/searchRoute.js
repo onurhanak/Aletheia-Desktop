@@ -8,7 +8,7 @@ var settings = require("../services/saveSettings");
 router.post("/", function (req, res) {
   query = req.body.query;
   column = req.body.column;
-  res.redirect("search" + "/?query=" + query + "&column=" + column);
+  res.redirect(`search/?query=${query}&column=${column}`);
 });
 
 router.get("/", function (req, res) {
@@ -17,8 +17,9 @@ router.get("/", function (req, res) {
   var mirror = "libgen.is"
   var query = req.query.query;
   var column = req.query.column;
+  var page = "1" //default
   if (query != undefined) {
-    search.searchLibgen(query, mirror, column).then(function (results) {
+    search.searchLibgen(query, mirror, column, page).then(function (results) {
       res.render("../views/search.ejs", { books: results });
     });
   } else {
