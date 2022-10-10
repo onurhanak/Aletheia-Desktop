@@ -27,8 +27,11 @@ app.use('/library', libraryPage);
 const settingsPage = require('./routes/settingsRoute.js')
 app.use('/settings', settingsPage);
 
+const introPage = require('./routes/introRoute.js')
+app.use('/', introPage)
+
 const indexPage = require('./routes/indexRoute.js');
-app.use('/', indexPage);
+app.use('/index', indexPage);
 
 const downloadPage = require('./routes/downloadRoute.js');
 app.use('/download', downloadPage);

@@ -14,14 +14,22 @@ router.post("/", function (req, res) {
 router.get("/", function (req, res) {
   var settingsData = settings.readSettings();
   var theme = settingsData[0];
-  var mirror = "libgen.is"
+  var mirror = settingsData[1];
   var query = req.query.query;
   var column = req.query.column;
   var page = "1" //default
   if (query != undefined) {
-    search.searchLibgen(query, mirror, column, page).then(function (results) {
-      res.render("../views/search.ejs", { books: results });
-    });
+    try {
+      search.searchLibgen(query, mirror, column, page).then(function (results) {
+        if (results != "No results") {
+          res.render("../views/search.ejs", { books: results });
+        } else {
+          res.render("../views/noResults.ejs");
+        }
+      });
+    } catch {
+      res.render("index");
+    }
   } else {
     res.render("index");
   }

@@ -34,7 +34,7 @@ async function buildBooks(booksList) {
   return [booksObjList, idList];
 }
 
-async function generateUrlString(idList) {
+async function generateUrlString(idList,mirror) {
   var urlString = "";
   for (let x = 0; x < idList.length; x++) {
     urlString = urlString + idList[x] + ",";
@@ -45,7 +45,7 @@ async function generateUrlString(idList) {
 
   await axios
     .get(
-      `https://libgen.is/json.php?ids=${urlString}&fields=id,md5,openlibraryid`
+      `https://${mirror}/json.php?ids=${urlString}&fields=id,md5,openlibraryid`
     )
     .then(async function (response) {
       for (let y = 0; y < response.data.length; y++) {
@@ -107,19 +107,29 @@ async function addDownloadLink(completeList) {
 }
 
 async function searchLibgen(query, mirror, column,page) {
-  return new Promise(async function (resolve, reject) {
-    var searchUrl =`https://${mirror}/search.php?req=${query}&lg_topic=libgen&open=0&view=simple&res=50&phrase=1&column=${column}&page=${page}`
-    await axios.get(searchUrl).then(async function (response) {
-      var results = await parseResults(response.data);
-      var objList_idList = await buildBooks(results);
-      var objList = objList_idList[0];
-      var idList = objList_idList[1];
-      var md5_olid = await generateUrlString(idList);
-      var completeList = await assignProperties(md5_olid, objList);
-      var completeListWithDL = await addDownloadLink(completeList);
-      resolve(completeListWithDL);
+    return new Promise(async function (resolve, reject) {
+      var searchUrl =`https://${mirror}/search.php?req=${query}&lg_topic=libgen&open=0&view=simple&res=50&phrase=1&column=${column}&page=${page}`
+      await axios.get(searchUrl)
+      .catch(function (error) {
+        console.log('ERROR')
+      })
+      .then(async function (response) {
+        var results = await parseResults(response.data);
+        if (results.length>0) {
+          var objList_idList = await buildBooks(results);
+          var objList = objList_idList[0];
+          var idList = objList_idList[1];
+          var md5_olid = await generateUrlString(idList,mirror);
+          var completeList = await assignProperties(md5_olid, objList);
+          var completeListWithDL = await addDownloadLink(completeList);
+          resolve(completeListWithDL);
+        } else {
+          resolve('No results')
+        }
+
+      })
     });
-  });
-}
+  } 
+
 
 module.exports = { searchLibgen };

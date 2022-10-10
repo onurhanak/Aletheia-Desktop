@@ -7,8 +7,9 @@ const fsExtra = require('fs-extra');
 const fs = require('fs');
 
 async function checkForFile(fileName) {
-    await fsExtra.ensureFile(fileName);
-    fs.writeFileSync(fileName, "{}");
+    if (!fsExtra.ensureFile(fileName)) {
+        fs.writeFileSync(fileName, "{}");
+    }
 }
 
 function createFiles() {
