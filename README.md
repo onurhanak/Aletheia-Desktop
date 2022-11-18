@@ -1,3 +1,4 @@
+# Aletheia is under heavy development and not ready for daily use.
 
 <sub>
 <h1 align="center">Aletheia/ἀλήθεια</h1>
